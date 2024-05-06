@@ -19,6 +19,15 @@ CREATE TABLE fighter (
 
 CREATE TABLE battle_history (
     id SERIAL PRIMARY KEY,
-    type_btl VARCHAR(255) NOT NULL,
-
+    f1_id INT NOT NULL,
+    f2_id INT NOT NULL,
+    winner_id INT NOT NULL,
+    loser_id INT NOT NULL,
+    FOREIGN KEY (f1_id) REFERENCES fighter(id),
+    FOREIGN KEY (f2_id) REFERENCES fighter(id),
+    FOREIGN KEY (winner_id) REFERENCES fighter(id),
+    FOREIGN KEY (loser_id) REFERENCES fighter(id)
 );
+
+
+-- bt_type = tipo de batalha (stock, time)
