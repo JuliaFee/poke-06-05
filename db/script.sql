@@ -29,5 +29,7 @@ CREATE TABLE battle_history (
     FOREIGN KEY (loser_id) REFERENCES fighter(id)
 );
 
-
--- bt_type = tipo de batalha (stock, time)
+-- f1_id = id do lutador 1
+-- f2_id = id do lutador 2
+-- winner_id = id do vencedor
+-- loser_id = id do perdedor
