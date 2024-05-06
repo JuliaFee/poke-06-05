@@ -9,7 +9,7 @@ const pool = new Pool({
   host: 'localhost',
   database: 'ssbu',
   password: 'ds564',
-  port: 9876,
+  port: 5432,
 });
 
 app.use(express.json());
@@ -23,8 +23,8 @@ app.get('/fighters', async (req, res) => {
             fighters: resultado.rows
         });
     } catch (error) {
-        console.error('Erro ao obter lutadores');
-        res.status(500).send({ mensagem: 'Erro interno ao obter lutadores' });
+        console.error('Erro ao obter todos os lutadores:', error);
+        res.status(500).send({ mensagem: 'Erro interno ao obter todos os lutadores' });
     }
 });
 
@@ -42,20 +42,21 @@ app.get('/fighters/:id', async (req, res) => {
         res.status(500).send({ mensagem: 'Erro interno ao obter lutador' });
     }
 });
-
-// rota get fighters por nome
-app.get('/fighters/:f_name', async (req, res) => {
+// rota GET fighters por nome
+app.get('/fighters/name/:f_name', async (req, res) => {
     try {
         const { f_name } = req.params;
         const resultado = await pool.query('SELECT * FROM fighters WHERE f_name = $1', [f_name]);
         res.json({
             total: resultado.rowCount,
-            fighters: resultado.rows });
+            fighters: resultado.rows
+        });
     } catch (error) {
-        console.error('Erro ao obter lutador');
-        res.status(500).send({ mensagem: 'Erro interno ao obter lutador' });
+        console.error('Erro ao obter lutador por nome:', error.message);
+        res.status(500).send({ mensagem: 'Erro interno ao obter lutador por nome' });
     }
 });
+
 
 // rota POST fighters
 
