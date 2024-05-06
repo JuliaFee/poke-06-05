@@ -36,6 +36,7 @@ CREATE TABLE battle_history (
 -- winner_id = id do vencedor
 -- loser_id = id do perdedor
 
+-- todos os lutadores obtidos no SSBU sem dlc
 INSERT INTO fighters (f_name, hp, atk, spd, game) 
 VALUES 
     ('Mario', 150, 30, 10, 'Super Mario Bros'),
