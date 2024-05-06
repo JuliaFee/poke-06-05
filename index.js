@@ -99,3 +99,13 @@ app.delete('/fighters/:id', async (req, res) => {
         res.status(500).send({ mensagem: 'Erro interno ao excluir lutador' });
     }
 });
+
+// infos do servidor
+app.get('/', (req, res) => {
+    res.send('👊 servidor funcionando!');
+});
+
+
+app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
+});
