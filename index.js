@@ -57,7 +57,7 @@ app.get('/fighters/:f_name', async (req, res) => {
     }
 });
 
-// rota POST Fighters
+// rota POST fighters
 
 app.post('/fighters', async (req, res) => {
     try {
@@ -71,5 +71,31 @@ app.post('/fighters', async (req, res) => {
     } catch (error) {
         console.error('Erro ao registrar lutador');
         res.status(500).send({ mensagem: 'Erro interno ao registrar lutador' });
+    }
+});
+
+// rota PUT fighters
+app.put('/fighters/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { f_name, hp, atk, spd, game } = req.body;
+        await pool.query('UPDATE fighters SET f_name = $1, hp = $2, atk = $3, spd = $4, game = $5 WHERE id = $6', 
+        [f_name, hp, atk, spd, game, id]);
+        res.status(200).send({ mensagem: 'lutador atualizado com sucesso' });
+    } catch (error) {
+        console.error('lutador ao atualizar herói');
+        res.status(500).send({ mensagem: 'lutador interno ao atualizar herói' });
+    }
+});
+
+//rota DELETE fighters
+app.delete('/fighters/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        await pool.query('DELETE FROM fighters WHERE id = $1', [id]);
+        res.status(200).send({ mensagem: 'lutador excluído com sucesso' });
+    } catch (error) {
+        console.error('Erro ao excluir lutador');
+        res.status(500).send({ mensagem: 'Erro interno ao excluir lutador' });
     }
 });
