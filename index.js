@@ -14,6 +14,20 @@ const pool = new Pool({
 
 app.use(express.json());
 
+// rota GET fighters
+app.get('/fighters', async (req, res) => {
+    try {
+        const resultado = await pool.query('SELECT * FROM fighters');
+        res.json({
+            total: resultado.rowCount,
+            fighters: resultado.rows
+        });
+    } catch (error) {
+        console.error('Erro ao obter lutadores');
+        res.status(500).send({ mensagem: 'Erro interno ao obter lutadores' });
+    }
+});
+
 // rota POST Fighters
 
 app.post('/fighters', async (req, res) => {
@@ -26,7 +40,7 @@ app.post('/fighters', async (req, res) => {
         res.status(200).send({ mensagem: 'Lutador registrado com sucesso' });
         
     } catch (error) {
-        console.error('Erro ao registrar lutador:', error);
+        console.error('Erro ao registrar lutador');
         res.status(500).send({ mensagem: 'Erro interno ao registrar lutador' });
     }
 });
