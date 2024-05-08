@@ -15,3 +15,12 @@ Super Smash Bros. Ultimate, chamado no Japão de Super Smash Bros. Special, é u
 
 Assim, o código será hospedado em um link localhost.
 
+# Como consultar a tabela?
+- As informações das tabelas são armazenadas dentro da pasta __database__ do projeto, no arquivo __script.sql__.
+- Copie e cole o link localhost:9876 no aplicativo Insomnia. A porta está pre-settada para 9876.
+- Utilize "__localhost:9876/[nome da tabela]__" após o link para indicar que você está buscando dentros das tabelas fighters ou battle_history, utilizando o método __GET__.
+- Utilize "__localhost:9876/[nome da tabela]/[id do registro]__" para indicar que você está buscando um registro específico,utilizando seu ID como número. Utilize e o método __GET__.
+
+# Tabelas
+
+- As tabelas disponíveis consistem em FIGHTERS e BATTLE_HISTORY.

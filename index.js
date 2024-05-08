@@ -57,6 +57,20 @@ app.get('/fighters/name/:f_name', async (req, res) => {
     }
 });
 
+//rota Get fighters por game
+app.get('/fighters/game/:game', async (req, res) => {
+    try {
+        const { game } = req.params;
+        const resultado = await pool.query('SELECT * FROM fighters WHERE game = $1', [game]);
+        res.json({
+            total: resultado.rowCount,
+            fighters: resultado.rows
+        });
+    } catch (error) {
+        console.error('Erro ao obter lutador por jogo:', error.message);
+        res.status(500).send({ mensagem: 'Erro interno ao obter lutador por jogo' });
+    }
+});
 
 // rota POST fighters
 
