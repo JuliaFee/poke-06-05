@@ -9,7 +9,6 @@ Super Smash Bros. Ultimate, chamado no Japão de Super Smash Bros. Special, é u
 - Ao abrir o projeto pelo VSCode, rode os comandos:
 - *npm install -y*
 - *npm install nodemon*
-- *npm install axios*
 - *npm install express*
 - *npm run dev*
 
