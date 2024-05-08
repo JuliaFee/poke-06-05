@@ -94,6 +94,8 @@ Assim, o código será hospedado em um link localhost.
 
 *https://github.com/thiago-rferreira/atividade-herois-batalha.git*
 *https://pt.wikipedia.org/wiki/Super_Smash_Bros._Ultimate*
+*https://www.nintendo.com/pt-br/store/products/super-smash-bros-ultimate-switch/*
+*https://www.smashbros.com/en_US/*
 
 ## Assinatura
 
