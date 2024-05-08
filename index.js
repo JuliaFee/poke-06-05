@@ -119,10 +119,10 @@ app.delete('/fighters/:id', async (req, res) => {
 app.get('/battle-history', async (req, res) => {
     try {
         const resultado = await pool.query(`
-            SELECT b.id, f1.f_name as vencedor, f2.f_name as perdedor
-            FROM battle_history b
-            INNER JOIN fighters f1 ON b.winner_id = f1.id
-            INNER JOIN fighters f2 ON b.loser_id = f2.id;
+            SELECT bh.id, f1.f_name as vencedor, f2.f_name as perdedor
+            FROM battle_history bh
+            INNER JOIN fighters f1 ON bh.winner_id = f1.id
+            INNER JOIN fighters f2 ON bh.loser_id = f2.id;
         `);
         res.json({
             total: resultado.rowCount,
